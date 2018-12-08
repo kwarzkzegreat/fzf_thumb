@@ -1,0 +1,35 @@
+#!/bin/bash
+
+
+# title=`xprop -id $WINDOWID WM_NAME|awk '{print $3}'|xargs echo`
+pix () {
+
+if [[  "$1" == *.jpg ]] \
+    || [[ "$1" == *.JPG ]] \
+    || [[ "$1" == *.png ]] \
+    || [[ "$1" == *.jpeg ]] \
+    || [[ "$1" == *.gif ]]; then
+        display \
+            -quiet \
+            -thumbnail 320x180 "$1"
+
+#    display -quiet -alpha off -window T2 -resize 160x90 -geometry +550+20 "$1"
+else 
+    if [[ "$1" == *.pdf ]]; then
+        less "$1"
+    else
+        if [[ -f "$1" ]]; then
+            head -n 100 "$1"
+        else
+            if [[ -x "$1" ]]; then                           
+                tree -C "$1"
+            else
+                echo 'nope'
+            fi
+        fi
+    fi
+fi
+
+}
+
+pix "$1"
