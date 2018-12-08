@@ -4,7 +4,7 @@
 dependencies:
 
     - fzf, obviously ( https://github.com/junegunn/fzf )
-    - mupdf ( check repo, or build from source )
+    - less
     - imagemagick display ( "" )
 
 usage:
